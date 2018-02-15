@@ -4,9 +4,13 @@
 	header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
 /* Connect to the local server using Windows Authentication and   
 specify the AdventureWorks database as the database in use. */  
-//$serverName = "192.168.16.5";  
-$serverName = "138.122.98.73";
-$connectionInfo = array( "Database"=>"Corporativo", "UID"=>"sa", "PWD"=>"ControlGas2016.");  
+//$serverName = "192.168.16.5";  //local migas
+//$serverName = "138.122.98.73"; //publica migas
+$serverName = "170.239.148.88"; //publicamexienergi
+//$connectionInfo = array( "Database"=>"Corporativo", "UID"=>"sa", "PWD"=>"ControlGas2016.");  //migas
+//$conn = sqlsrv_connect( $serverName, $connectionInfo);   //migas
+
+$connectionInfo = array( "Database"=>"SistemaCVMiGas", "UID"=>"sa", "PWD"=>"M1G4s2017#");  
 $conn = sqlsrv_connect( $serverName, $connectionInfo);  
 if( $conn === false ){  
      echo "Could not connect.\n";  
@@ -16,7 +20,7 @@ if( $conn === false ){
 	/*$tsql_callSP = "{call LlenadoPromedio( ? )}";  
 	//$correo = $_POST['correo'];
 	//$pass = $_POST['contrasena'];
-	$estacion = 2;
+	$estacion = 1;
 	$params = array(   
 	                 array($estacion)  
 	               );  
@@ -39,7 +43,7 @@ if( $conn === false ){
 /*---------DESGLOCE DE FECHAS POR DIAS-----------------------*/
 $tsql_callSP = "{call LlenadoConsultaFechaConsulta( ?, ?, ? )}";
 	$inicio = '01/02/2018';
-	$fin = '05/02/2018';
+	$fin = '14/02/2018';
 	$estac = 1;
 	//echo $inicio.$fin.$estac;
 	$params = array(
@@ -53,7 +57,7 @@ $tsql_callSP = "{call LlenadoConsultaFechaConsulta( ?, ?, ? )}";
 		//echo $stmt3;
 		//$product = sqlsrv_fetch_object( $stmt3, "Estacion", array($i));
 		while ($obj = sqlsrv_fetch_array($stmt3, SQLSRV_FETCH_ASSOC)) {
-		    echo number_format($obj['VentaTotalMagna'])."*".number_format($obj['VentaTotalPremium'])."*".number_format($obj['VentaTotalDiesel'])."*".number_format($obj['TotalVenta'])."*".number_format($obj['LitrosTotalMagna'])."*".number_format($obj['LitrosTotalPremium'])."*".number_format($obj['LitrosTotalDiesel'])."*".number_format($obj['TotalLitros'])."*".$obj['PorLitrosTotalMagna']."*".$obj['PorLitrosTotalPremium']."*".$obj['PorLitrosTotalDiesel']."*".$obj['PrecioPromedioMagna']."*".$obj['PrecioPromedioPremium']."*".$obj['PrecioPromedioDiesel']."*".$obj['fecha']."*"; 
+		    echo number_format($obj['VentaTotalMagna'])."*".number_format($obj['VentaTotalPremium'])."*".number_format($obj['VentaTotalDiesel'])."*".number_format($obj['TotalVenta'])."*".number_format($obj['LitrosTotalMagna'])."*".number_format($obj['LitrosTotalPremium'])."*".number_format($obj['LitrosTotalDiesel'])."*".number_format($obj['TotalLitros'])."*".$obj['PorLitrosTotalMagna']."*".$obj['PorLitrosTotalPremium']."*".$obj['PorLitrosTotalDiesel']."*".$obj['PrecioPromedioMagna']."*".$obj['PrecioPromedioPremium']."*".$obj['PrecioPromedioDiesel']."*".$obj['fecha']."*\n"; 
 		}
 	}if( $stmt3 === false ){  
 	     echo "Error in executing statement 3.\n";  

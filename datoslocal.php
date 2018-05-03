@@ -179,7 +179,7 @@ if($bandera == 'fechaFin'){ //CARGA POR EL RANGO DE FECHAS
 }
 
 if($bandera == 'ventaFin'){
-	$tsql_callSP = "{call LlenadoTotalesPromedio( ? ) }";
+	$tsql_callSP = "{call LlenadoMesTotal( ? ) }";
 	$estac = $_POST['idesta'];
 	/*$estac = '1,1,1,1,1,1';*/
 	$params = array(
@@ -189,7 +189,7 @@ if($bandera == 'ventaFin'){
 	if($stmt3){
 		/*$product = sqlsrv_fetch_object( $stmt3, "Estacion", array($i));*/
 		while ($obj = sqlsrv_fetch_array($stmt3, SQLSRV_FETCH_ASSOC)) {
-		    echo number_format($obj['VentaTotalMagna'])."*".number_format($obj['VentaTotalPremium'])."*".number_format($obj['VentaTotalDiesel'])."*".number_format($obj['TotalVenta'])."*".number_format($obj['LitrosTotalMagna'])."*".number_format($obj['LitrosTotalPremium'])."*".number_format($obj['LitrosTotalDiesel'])."*".number_format($obj['TotalLitros'])."*".$obj['PromLitrosTotalMagna']."*".$obj['PromLitrosTotalPremium']."*".$obj['PromLitrosTotalDiesel']."*".$obj['PrecioPromedioMagna']."*".$obj['PrecioPromedioPremium']."*".$obj['PrecioPromedioDiesel']."*";
+		    echo number_format($obj['VentaTotalMagna'])."*".number_format($obj['VentaTotalPremium'])."*".number_format($obj['VentaTotalDiesel'])."*".number_format($obj['TotalVenta'])."*".number_format($obj['LitrosTotalMagna'])."*".number_format($obj['LitrosTotalPremium'])."*".number_format($obj['LitrosTotalDiesel'])."*".number_format($obj['TotalLitros'])."*".$obj['PorLitrosTotalMagna']."*".$obj['PorLitrosTotalPremium']."*".$obj['PorLitrosTotalDiesel']."*".$obj['PrecioPromedioMagna']."*".$obj['PrecioPromedioPremium']."*".$obj['PrecioPromedioDiesel']."*".$obj['fecha']."*\n";
 		    										//ESTA HAY QUE QUITARLE LA HORA
 		   /*echo $obj['VentaTotalMagna']."*";*/
 		}

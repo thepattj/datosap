@@ -12,8 +12,8 @@ if( $conn === false ){
      die( print_r( sqlsrv_errors(), true));  
 }  
 
-$bandera = $_POST['flag'];
-//$bandera = 'promedioFin';
+//$bandera = $_POST['flag'];
+$bandera = 'fechaFin';
 if($bandera == 'cargaFin'){ //CARGA EL CORTE
 	$tsql_callSP = "{call LlenadoUltimoCorte( ? ) }";
 	$estac = $_POST['idesta'];
@@ -108,10 +108,13 @@ if($bandera == 'consolida'){
 
 if($bandera == 'fechaFin'){ //CARGA POR EL RANGO DE FECHAS
 	$tsql_callSP = "{call LlenadoConsultaFechaConsulta( ?, ?, ? )}";
-	$inicio = $_POST['fecini'];
-	$fin = $_POST['fecfin'];
-	$estac = $_POST['idesta'];
-	/*echo $inicio.$fin.$estac;*/
+	//$inicio = $_POST['fecini'];
+	//$fin = $_POST['fecfin'];
+	//$estac = $_POST['idesta'];
+    
+	$inicio = '03/05/2018';
+	$fin = '03/05/2018';
+	$estac = 5;
 	$params = array(
 				 array($inicio),
 				 array($fin),

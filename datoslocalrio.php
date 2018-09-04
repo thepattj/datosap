@@ -12,8 +12,8 @@ if( $conn === false ){
      die( print_r( sqlsrv_errors(), true));  
 }  
 
-$bandera = $_POST['flag'];
-//$bandera = 'consolida';
+//$bandera = $_POST['flag'];
+$bandera = 'consolida';
 if($bandera == 'cargaFin'){ //CARGA EL CORTE
 	$tsql_callSP = "{call LlenadoUltimoCorte( ? ) }";
 	$estac = $_POST['idesta'];
@@ -81,8 +81,8 @@ if($bandera == 'promedioFin'){
 
 if($bandera == 'consolida'){
 	$tsql_callSP = "{call LlenadoConsolidado( ? ) }";
-	$estac = $_POST['est'];
-	//$estac = '1,1,1,1,1,1,1,1,1,1,1';
+	//$estac = $_POST['est'];
+	$estac = '1,1,1,1,1,1,1,1,1,1,0';
 	$params = array(
 				 array($estac)
 	            );
